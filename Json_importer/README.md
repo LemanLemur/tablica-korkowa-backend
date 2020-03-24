@@ -4,7 +4,7 @@
 
 1. Plik JSON który chcemy zaimportować do bazy danych wrzucamy do folderu Json_importer/JSON
 2. W pliku import.js podajemy ścieżkę do JSONa, ktorego chcemy importować:
-```Java Script
+```javascript
 await firestoreService.restore('./JSON/nazwa_naszego_jsona.json');
 ```
 
