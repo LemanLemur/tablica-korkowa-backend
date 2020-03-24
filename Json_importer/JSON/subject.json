@@ -1,0 +1,888 @@
+{
+    "Subject": [
+        {
+          "Id": 0,
+          "Name": "administracja"
+        },
+        {
+          "Id": 1,
+          "Name": "aerodynamika"
+        },
+        {
+          "Id": 2,
+          "Name": "aktorstwo"
+        },
+        {
+          "Id": 3,
+          "Name": "algebra"
+        },
+        {
+          "Id": 4,
+          "Name": "analiza matematyczna"
+        },
+        {
+          "Id": 5,
+          "Name": "anatomia"
+        },
+        {
+          "Id": 6,
+          "Name": "architektura"
+        },
+        {
+          "Id": 7,
+          "Name": "astronomia"
+        },
+        {
+          "Id": 8,
+          "Name": "automatyka"
+        },
+        {
+          "Id": 9,
+          "Name": "badania operacyjne"
+        },
+        {
+          "Id": 10,
+          "Name": "bazy danych"
+        },
+        {
+          "Id": 11,
+          "Name": "BHP"
+        },
+        {
+          "Id": 12,
+          "Name": "bibliotekoznawstwo"
+        },
+        {
+          "Id": 13,
+          "Name": "bilard"
+        },
+        {
+          "Id": 14,
+          "Name": "biochemia"
+        },
+        {
+          "Id": 15,
+          "Name": "biologia"
+        },
+        {
+          "Id": 16,
+          "Name": "biologia molekularna"
+        },
+        {
+          "Id": 17,
+          "Name": "biznes"
+        },
+        {
+          "Id": 18,
+          "Name": "boks"
+        },
+        {
+          "Id": 19,
+          "Name": "brydż"
+        },
+        {
+          "Id": 20,
+          "Name": "budownictwo"
+        },
+        {
+          "Id": 21,
+          "Name": "ceramika"
+        },
+        {
+          "Id": 22,
+          "Name": "chemia"
+        },
+        {
+          "Id": 23,
+          "Name": "doradztwo zawodowe"
+        },
+        {
+          "Id": 24,
+          "Name": "druk 3D"
+        },
+        {
+          "Id": 25,
+          "Name": "dziennikarstwo"
+        },
+        {
+          "Id": 26,
+          "Name": "efektywna nauka"
+        },
+        {
+          "Id": 27,
+          "Name": "ekonometria"
+        },
+        {
+          "Id": 27,
+          "Name": "ekonomia"
+        },
+        {
+          "Id": 28,
+          "Name": "ekonomia matematyczna"
+        },
+        {
+          "Id": 29,
+          "Name": "elektroenergetyka"
+        },
+        {
+          "Id": 30,
+          "Name": "elektronika"
+        },
+        {
+          "Id": 31,
+          "Name": "elektrotechnika"
+        },
+        {
+          "Id": 32,
+          "Name": "emisja głosu"
+        },
+        {
+          "Id": 33,
+          "Name": ""
+        },
+        {
+          "Id": 34,
+          "Name": "energoelektronika"
+        },
+        {
+          "Id": 35,
+          "Name": "energetyka"
+        },
+        {
+          "Id": 36,
+          "Name": "ergonomia"
+        },
+        {
+          "Id": 37,
+          "Name": "etyka"
+        },
+        {
+          "Id": 38,
+          "Name": "etykieta biznesu"
+        },
+        {
+          "Id": 39,
+          "Name": "farmacja"
+        },
+        {
+          "Id": 40,
+          "Name": "filozofia"
+        },
+        {
+          "Id": 41,
+          "Name": "finanse i rachunkowość"
+        },
+        {
+          "Id": 42,
+          "Name": "fitness"
+        },
+        {
+          "Id": 43,
+          "Name": "fizjologia"
+        },
+        {
+          "Id": 44,
+          "Name": "fizjoterapia"
+        },
+        {
+          "Id": 45,
+          "Name": "fizyka"
+        },
+        {
+          "Id": 46,
+          "Name": "florystyka"
+        },
+        {
+          "Id": 47,
+          "Name": "fotografia"
+        },
+        {
+          "Id": 48,
+          "Name": "fryzjerstwo"
+        },
+        {
+          "Id": 49,
+          "Name": "genetyka"
+        },
+        {
+          "Id": 50,
+          "Name": "geodezja"
+        },
+        {
+          "Id": 51,
+          "Name": "geografia"
+        },
+        {
+          "Id": 52,
+          "Name": "geologia"
+        },
+        {
+          "Id": 53,
+          "Name": "geometria wykreślna"
+        },
+        {
+          "Id": 54,
+          "Name": "gospodarka przestrzenna"
+        },
+        {
+          "Id": 55,
+          "Name": "gra na instrumentach"
+        },
+        {
+          "Id": 56,
+          "Name": "grafika komputerowa"
+        },
+        {
+          "Id": 57,
+          "Name": "historia"
+        },
+        {
+          "Id": 58,
+          "Name": "historia sztuki"
+        },
+        {
+          "Id": 59,
+          "Name": "hotelarstwo"
+        },
+        {
+          "Id": 60,
+          "Name": "informatyka"
+        },
+        {
+          "Id": 61,
+          "Name": "inżynieria chemiczna"
+        },
+        {
+          "Id": 62,
+          "Name": "jazda konna"
+        },
+        {
+          "Id": 63,
+          "Name": "jazda na deskorolce"
+        },
+        {
+          "Id": 64,
+          "Name": "jazda na łyżwach"
+        },
+        {
+          "Id": 65,
+          "Name": "jazda na nartach"
+        },
+        {
+          "Id": 66,
+          "Name": "jazda na rolkach"
+        },
+        {
+          "Id": 67,
+          "Name": "język afrikaans"
+        },
+        {
+          "Id": 68,
+          "Name": "język akadyjski"
+        },
+        {
+          "Id": 69,
+          "Name": "język albański"
+        },
+        {
+          "Id": 70,
+          "Name": "język angielski"
+        },
+        {
+          "Id": 71,
+          "Name": "język arabski"
+        },
+        {
+          "Id": 72,
+          "Name": "język azerbejdżański"
+        },
+        {
+          "Id": 73,
+          "Name": "język białoruski"
+        },
+        {
+          "Id": 74,
+          "Name": "język bułgarski"
+        },
+        {
+          "Id": 75,
+          "Name": "język chiński"
+        },
+        {
+          "Id": 76,
+          "Name": "język chorwacki"
+        },
+        {
+          "Id": 77,
+          "Name": "język czeski"
+        },
+        {
+          "Id": 78,
+          "Name": "język dari"
+        },
+        {
+          "Id": 79,
+          "Name": "język duński"
+        },
+        {
+          "Id": 80,
+          "Name": "język egipski"
+        },
+        {
+          "Id": 81,
+          "Name": "język esperanto"
+        },
+        {
+          "Id": 82,
+          "Name": "język estoński"
+        },
+        {
+          "Id": 83,
+          "Name": "język fiński"
+        },
+        {
+          "Id": 84,
+          "Name": "język francuski"
+        },
+        {
+          "Id": 85,
+          "Name": "język grecki"
+        },
+        {
+          "Id": 86,
+          "Name": "język gruziński"
+        },
+        {
+          "Id": 87,
+          "Name": "język hebrajski"
+        },
+        {
+          "Id": 88,
+          "Name": "język hindi"
+        },
+        {
+          "Id": 89,
+          "Name": "język hiszpański"
+        },
+        {
+          "Id": 90,
+          "Name": "język holenderski"
+        },
+        {
+          "Id": 91,
+          "Name": "język indonezyjski"
+        },
+        {
+          "Id": 92,
+          "Name": "język islandzki"
+        },
+        {
+          "Id": 93,
+          "Name": "język japoński"
+        },
+        {
+          "Id": 94,
+          "Name": "język jidysz"
+        },
+        {
+          "Id": 95,
+          "Name": "język kataloński"
+        },
+        {
+          "Id": 96,
+          "Name": "język koreański"
+        },
+        {
+          "Id": 97,
+          "Name": "język kurdyjski"
+        },
+        {
+          "Id": 98,
+          "Name": "język litewski"
+        },
+        {
+          "Id": 99,
+          "Name": "język łotewski"
+        },
+        {
+          "Id": 100,
+          "Name": "język łużycki"
+        },
+        {
+          "Id": 101,
+          "Name": "język macedoński"
+        },
+        {
+          "Id": 102,
+          "Name": "język migowy"
+        },
+        {
+          "Id": 103,
+          "Name": "język mongolski"
+        },
+        {
+          "Id": 104,
+          "Name": "język niderlandzki"
+        },
+        {
+          "Id": 105,
+          "Name": "język niemiecki"
+        },
+        {
+          "Id": 106,
+          "Name": "język norweski"
+        },
+        {
+          "Id": 107,
+          "Name": "język ormiański"
+        },
+        {
+          "Id": 108,
+          "Name": "język osmański"
+        },
+        {
+          "Id": 109,
+          "Name": "język paszto"
+        },
+        {
+          "Id": 110,
+          "Name": "język perski"
+        },
+        {
+          "Id": 111,
+          "Name": "język polski"
+        },
+        {
+          "Id": 112,
+          "Name": "język polski dla cudzoziemców"
+        },
+        {
+          "Id": 113,
+          "Name": "język portugalski"
+        },
+        {
+          "Id": 114,
+          "Name": "język rosyjski"
+        },
+        {
+          "Id": 115,
+          "Name": "język rumuński"
+        },
+        {
+          "Id": 116,
+          "Name": "język serbski"
+        },
+        {
+          "Id": 117,
+          "Name": "język słowacki"
+        },
+        {
+          "Id": 118,
+          "Name": "język słoweński"
+        },
+        {
+          "Id": 119,
+          "Name": "język sumeryjski"
+        },
+        {
+          "Id": 120,
+          "Name": "język szwedzki"
+        },
+        {
+          "Id": 121,
+          "Name": "język tajski"
+        },
+        {
+          "Id": 122,
+          "Name": "język tamilski"
+        },
+        {
+          "Id": 123,
+          "Name": "język turecki"
+        },
+        {
+          "Id": 124,
+          "Name": "język tybetański"
+        },
+        {
+          "Id": 125,
+          "Name": "język ukraiński"
+        },
+        {
+          "Id": 126,
+          "Name": "język uzbecki"
+        },
+        {
+          "Id": 127,
+          "Name": "język węgierski"
+        },
+        {
+          "Id": 128,
+          "Name": "język wietnamski"
+        },
+        {
+          "Id": 129,
+          "Name": "język włoski"
+        },
+        {
+          "Id": 130,
+          "Name": "językoznawstwo"
+        },
+        {
+          "Id": 131,
+          "Name": "joga"
+        },
+        {
+          "Id": 132,
+          "Name": "kaligrafia"
+        },
+        {
+          "Id": 133,
+          "Name": "karate"
+        },
+        {
+          "Id": 134,
+          "Name": "konstrukcje inżynierskie"
+        },
+        {
+          "Id": 135,
+          "Name": "kosmetologia"
+        },
+        {
+          "Id": 136,
+          "Name": "kulinaria"
+        },
+        {
+          "Id": 137,
+          "Name": "kultura antyczna"
+        },
+        {
+          "Id": 138,
+          "Name": "kulturoznawstwo"
+        },
+        {
+          "Id": 139,
+          "Name": "łacina"
+        },
+        {
+          "Id": 140,
+          "Name": "literaturoznawstwo"
+        },
+        {
+          "Id": 141,
+          "Name": "logika"
+        },
+        {
+          "Id": 142,
+          "Name": ""
+        },
+        {
+          "Id": 143,
+          "Name": "logistyka"
+        },
+        {
+          "Id": 144,
+          "Name": "logopedia"
+        },
+        {
+          "Id": 145,
+          "Name": "malarstwo i rysunek"
+        },
+        {
+          "Id": 146,
+          "Name": "marketing"
+        },
+        {
+          "Id": 147,
+          "Name": "matematyka"
+        },
+        {
+          "Id": 148,
+          "Name": "matematyka dyskretna"
+        },
+        {
+          "Id": 149,
+          "Name": "matematyka wyższa"
+        },
+        {
+          "Id": 150,
+          "Name": "mechanika"
+        },
+        {
+          "Id": 151,
+          "Name": "mechanika budowli"
+        },
+        {
+          "Id": 152,
+          "Name": "mechanika lotu"
+        },
+        {
+          "Id": 153,
+          "Name": "mechanika płynów"
+        },
+        {
+          "Id": 154,
+          "Name": "mechanika techniczna"
+        },
+        {
+          "Id": 155,
+          "Name": "medycyna"
+        },
+        {
+          "Id": 156,
+          "Name": "metodologia badań"
+        },
+        {
+          "Id": 157,
+          "Name": "metody numeryczne"
+        },
+        {
+          "Id": 158,
+          "Name": "mikrobiologia"
+        },
+        {
+          "Id": 159,
+          "Name": "mikroekonometria"
+        },
+        {
+          "Id": 160,
+          "Name": "modelarstwo"
+        },
+        {
+          "Id": 161,
+          "Name": "motywacja"
+        },
+        {
+          "Id": 162,
+          "Name": "muzyka"
+        },
+        {
+          "Id": 163,
+          "Name": "nauczanie początkowe"
+        },
+        {
+          "Id": 164,
+          "Name": "nauka jazdy"
+        },
+        {
+          "Id": 165,
+          "Name": "nauka o materiałach"
+        },
+        {
+          "Id": 166,
+          "Name": "nauka śpiewu"
+        },
+        {
+          "Id": 167,
+          "Name": "obsługa komputera"
+        },
+        {
+          "Id": 168,
+          "Name": "ochrona środowiska"
+        },
+        {
+          "Id": 169,
+          "Name": "parlamentaryzm"
+        },
+        {
+          "Id": 170,
+          "Name": "pedagogika"
+        },
+        {
+          "Id": 171,
+          "Name": "pływanie"
+        },
+        {
+          "Id": 172,
+          "Name": "podstawy konstrukcji maszyn"
+        },
+        {
+          "Id": 173,
+          "Name": "politologia"
+        },
+        {
+          "Id": 174,
+          "Name": "pozycjonowanie stron"
+        },
+        {
+          "Id": 175,
+          "Name": "prawo"
+        },
+        {
+          "Id": 176,
+          "Name": "produkcja filmu"
+        },
+        {
+          "Id": 177,
+          "Name": "prognozowanie"
+        },
+        {
+          "Id": 178,
+          "Name": "programowanie"
+        },
+        {
+          "Id": 179,
+          "Name": "przedsiębiorczość"
+        },
+        {
+          "Id": 180,
+          "Name": "przyroda"
+        },
+        {
+          "Id": 181,
+          "Name": "psychologia"
+        },
+        {
+          "Id": 182,
+          "Name": "public relations"
+        },
+        {
+          "Id": 183,
+          "Name": "rachunek prawdopodobieństwa"
+        },
+        {
+          "Id": 184,
+          "Name": "rachunkowość"
+        },
+        {
+          "Id": 185,
+          "Name": "robotyka"
+        },
+        {
+          "Id": 186,
+          "Name": "rolnictwo"
+        },
+        {
+          "Id": 187,
+          "Name": "rozwój osobisty"
+        },
+        {
+          "Id": 188,
+          "Name": "rysunek techniczny"
+        },
+        {
+          "Id": 189,
+          "Name": "rzeźba"
+        },
+        {
+          "Id": 190,
+          "Name": "samoobrona"
+        },
+        {
+          "Id": 191,
+          "Name": "jazda na snowboardzie"
+        },
+        {
+          "Id": 192,
+          "Name": "socjologia"
+        },
+        {
+          "Id": 193,
+          "Name": "sporty walki"
+        },
+        {
+          "Id": 194,
+          "Name": "stateczność jednostki pływającej"
+        },
+        {
+          "Id": 195,
+          "Name": "statystyka"
+        },
+        {
+          "Id": 196,
+          "Name": "strzelectwo sportowe"
+        },
+        {
+          "Id": 197,
+          "Name": "szachy"
+        },
+        {
+          "Id": 198,
+          "Name": "sztuka cyrkowa"
+        },
+        {
+          "Id": 199,
+          "Name": "szycie na maszynie"
+        },
+        {
+          "Id": 200,
+          "Name": "szydełkowanie"
+        },
+        {
+          "Id": 201,
+          "Name": "taniec"
+        },
+        {
+          "Id": 202,
+          "Name": "techniki pamięciowe"
+        },
+        {
+          "Id": 203,
+          "Name": "telekomunikacja"
+        },
+        {
+          "Id": 204,
+          "Name": "tenis"
+        },
+        {
+          "Id": 205,
+          "Name": "tenis stołowy"
+        },
+        {
+          "Id": 206,
+          "Name": "teoria mechanizmów i manipulatorów"
+        },
+        {
+          "Id": 207,
+          "Name": "termodynamika"
+        },
+        {
+          "Id": 208,
+          "Name": "transport"
+        },
+        {
+          "Id": 209,
+          "Name": "turystyka"
+        },
+        {
+          "Id": 210,
+          "Name": "tworzenie stron"
+        },
+        {
+          "Id": 211,
+          "Name": "weterynaria"
+        },
+        {
+          "Id": 212,
+          "Name": "wiedza o tańcu"
+        },
+        {
+          "Id": 213,
+          "Name": "wiedza powszechna"
+        },
+        {
+          "Id": 214,
+          "Name": "witraż"
+        },
+        {
+          "Id": 215,
+          "Name": "wos"
+        },
+        {
+          "Id": 216,
+          "Name": "wystąpienia publiczne"
+        },
+        {
+          "Id": 217,
+          "Name": "wytrzymałość materiałów"
+        },
+        {
+          "Id": 218,
+          "Name": "zarządzanie"
+        },
+        {
+          "Id": 219,
+          "Name": "żeglarstwo"
+        }
+      ]
+}
