@@ -10,6 +10,8 @@ var bodyParser = require("body-parser");
 //route ini
 var indexRouter = require('./routes/index');
 var viewsRouter = require('./routes/views');
+var subjectsRouter = require('./routes/subjects');
+var levelsRouter = require('./routes/levels');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +28,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //route use
 app.use('/', indexRouter);
 app.use('/views', viewsRouter);
+app.use('/subjects', subjectsRouter);
+app.use('/levels', levelsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

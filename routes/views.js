@@ -30,7 +30,6 @@ router.get("/", function(req, res, next) {
 
 router.get("/:id", function(req, res, next) {
   const db = req.app.get("db");
-  let not_found;
   var output = [];
 
   db.collection("Views")
@@ -149,7 +148,7 @@ router.delete("/:id", (req, res) => {
     .doc(req.params.id)
     .delete()
     .then(() => {
-      return res.status(200).json({ message: "Views deleted." });
+      return res.status(200).json({ message: "View deleted." });
     })
     .catch(error => {
       return res
