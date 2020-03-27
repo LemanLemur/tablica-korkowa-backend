@@ -11,6 +11,7 @@ router.get("/", function(req, res, next) {
       .then(snapshot => {
         if (snapshot) {
           snapshot.forEach(doc => {
+            console.log(doc)
             output.push({
               id: doc.id,
               value: doc.data().Value
