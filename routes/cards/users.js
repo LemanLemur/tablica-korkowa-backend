@@ -1,7 +1,7 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-export function GetCardsByUserId (req, res) {
+router.get("/:userID", function(req, res, next) {
     const db = req.app.get("db");
     var output = [];
     
@@ -45,4 +45,6 @@ export function GetCardsByUserId (req, res) {
           .status(400)
           .json({ message: "Unable to connect to Firestore." });
       });
-}
+});
+
+module.exports = router;
