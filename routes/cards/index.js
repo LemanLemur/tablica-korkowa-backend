@@ -2,13 +2,14 @@ var express = require("express");
 var router = express.Router();
 var routerUsers = require('./users');
 var routerCity = require('./city');
+var routerProvince = require('./province');
 
 var helpers = require('./helpers/output');
 
 /* GET Levels listing. */
 
 router.use("/city", routerCity);
-
+router.use("/province", routerProvince);
 router.use("/userID", routerUsers);
 
 router.get("/", function (req, res, next) {
