@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var helpers = require("./helpers/output");
 
 /*
 ----
@@ -37,28 +38,7 @@ router.get("/:city", function (req, res, next) {
         .then(snapshot => {
             snapshot.forEach(doc => {
                 if (doc.data().City == req.params.city) {
-                    output.push({
-                        id: doc.id,
-                        city: doc.data().City,
-                        created: doc.data().Created,
-                        deleted: doc.data().Deleted,
-                        description: doc.data().Description,
-                        endDate: doc.data().EndDate,
-                        isAbleToDrive: doc.data().IsAbleToDrive,
-                        isHit: doc.data().IsHit,
-                        isOnline: doc.data().IsOnline,
-                        levelId: doc.data().LevelID,
-                        price: doc.data().Price,
-                        range: doc.data().Range,
-                        startDate: doc.data().StartDate,
-                        status: doc.data().Status,
-                        subjectID: doc.data().SubjectID,
-                        tittle: doc.data().Tittle,
-                        type: doc.data().Type,
-                        userId: doc.data().UserID,
-                        viewsId: doc.data().ViewsID,
-                        province: doc.data().Province
-                    });
+                    output.push(helpers.getOutput(doc));
                 }
             });
             if (output.length === 0) {
@@ -84,28 +64,7 @@ router.get("/:city/type/:type", function (req, res, next) {
             snapshot.forEach(doc => {
                 if (doc.data().Type == req.params.type) {
                     if (doc.data().City == req.params.city) {
-                        output.push({
-                            id: doc.id,
-                            city: doc.data().City,
-                            created: doc.data().Created,
-                            deleted: doc.data().Deleted,
-                            description: doc.data().Description,
-                            endDate: doc.data().EndDate,
-                            isAbleToDrive: doc.data().IsAbleToDrive,
-                            isHit: doc.data().IsHit,
-                            isOnline: doc.data().IsOnline,
-                            levelId: doc.data().LevelID,
-                            price: doc.data().Price,
-                            range: doc.data().Range,
-                            startDate: doc.data().StartDate,
-                            status: doc.data().Status,
-                            subjectID: doc.data().SubjectID,
-                            tittle: doc.data().Tittle,
-                            type: doc.data().Type,
-                            userId: doc.data().UserID,
-                            viewsId: doc.data().ViewsID,
-                            province: doc.data().Province
-                        });
+                        output.push(helpers.getOutput(doc));
                     }
                 }
             });
@@ -133,28 +92,7 @@ router.get("/:city/subjectID/:subjectID", function (req, res, next) {
                 .forEach(doc => {
                     if (doc.data().City == req.params.city) {
                         if (doc.data().SubjectID == req.params.subjectID) {
-                            output.push({
-                                id: doc.id,
-                                city: doc.data().City,
-                                created: doc.data().Created,
-                                deleted: doc.data().Deleted,
-                                description: doc.data().Description,
-                                endDate: doc.data().EndDate,
-                                isAbleToDrive: doc.data().IsAbleToDrive,
-                                isHit: doc.data().IsHit,
-                                isOnline: doc.data().IsOnline,
-                                levelId: doc.data().LevelID,
-                                price: doc.data().Price,
-                                range: doc.data().Range,
-                                startDate: doc.data().StartDate,
-                                status: doc.data().Status,
-                                subjectID: doc.data().SubjectID,
-                                tittle: doc.data().Tittle,
-                                type: doc.data().Type,
-                                userId: doc.data().UserID,
-                                viewsId: doc.data().ViewsID,
-                                province: doc.data().Province
-                            });
+                            output.push(helpers.getOutput(doc));
                         }
                     }
                     if (output.length === 0) {
@@ -182,28 +120,7 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID", function (req, res, n
                 if (doc.data().City == req.params.city) {
                     if (doc.data().SubjectID == req.params.subjectID) {
                         if (doc.data().LevelID == req.params.levelID) {
-                            output.push({
-                                id: doc.id,
-                                city: doc.data().City,
-                                created: doc.data().Created,
-                                deleted: doc.data().Deleted,
-                                description: doc.data().Description,
-                                endDate: doc.data().EndDate,
-                                isAbleToDrive: doc.data().IsAbleToDrive,
-                                isHit: doc.data().IsHit,
-                                isOnline: doc.data().IsOnline,
-                                levelId: doc.data().LevelID,
-                                price: doc.data().Price,
-                                range: doc.data().Range,
-                                startDate: doc.data().StartDate,
-                                status: doc.data().Status,
-                                subjectID: doc.data().SubjectID,
-                                tittle: doc.data().Tittle,
-                                type: doc.data().Type,
-                                userId: doc.data().UserID,
-                                viewsId: doc.data().ViewsID,
-                                province: doc.data().Province
-                            });
+                            output.push(helpers.getOutput(doc));
 
                         }
                     }
@@ -233,28 +150,7 @@ router.get("/:city/subjectID/:subjectID/type/:type", function (req, res, next) {
                 if (doc.data().City == req.params.city) {
                     if (doc.data().SubjectID == req.params.subjectID) {
                         if (doc.data().Type == req.params.type) {
-                            output.push({
-                                id: doc.id,
-                                city: doc.data().City,
-                                created: doc.data().Created,
-                                deleted: doc.data().Deleted,
-                                description: doc.data().Description,
-                                endDate: doc.data().EndDate,
-                                isAbleToDrive: doc.data().IsAbleToDrive,
-                                isHit: doc.data().IsHit,
-                                isOnline: doc.data().IsOnline,
-                                levelId: doc.data().LevelID,
-                                price: doc.data().Price,
-                                range: doc.data().Range,
-                                startDate: doc.data().StartDate,
-                                status: doc.data().Status,
-                                subjectID: doc.data().SubjectID,
-                                tittle: doc.data().Tittle,
-                                type: doc.data().Type,
-                                userId: doc.data().UserID,
-                                viewsId: doc.data().ViewsID,
-                                province: doc.data().Province
-                            });
+                            output.push(helpers.getOutput(doc));
                         }
                     }
                 }
@@ -284,28 +180,7 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type", function (
                     if (doc.data().SubjectID == req.params.subjectID) {
                         if (doc.data().LevelID == req.params.levelID) {
                             if (doc.data().Type == req.params.type) {
-                                output.push({
-                                    id: doc.id,
-                                    city: doc.data().City,
-                                    created: doc.data().Created,
-                                    deleted: doc.data().Deleted,
-                                    description: doc.data().Description,
-                                    endDate: doc.data().EndDate,
-                                    isAbleToDrive: doc.data().IsAbleToDrive,
-                                    isHit: doc.data().IsHit,
-                                    isOnline: doc.data().IsOnline,
-                                    levelId: doc.data().LevelID,
-                                    price: doc.data().Price,
-                                    range: doc.data().Range,
-                                    startDate: doc.data().StartDate,
-                                    status: doc.data().Status,
-                                    subjectID: doc.data().SubjectID,
-                                    tittle: doc.data().Tittle,
-                                    type: doc.data().Type,
-                                    userId: doc.data().UserID,
-                                    viewsId: doc.data().ViewsID,
-                                    province: doc.data().Province
-                                });
+                                output.push(helpers.getOutput(doc));
                             }
                         }
                     }
@@ -334,28 +209,7 @@ router.get("/:city/isAbleToDrive/:isAbleToDrive", function (req, res, next) {
             snapshot.forEach(doc => {
                 if (doc.data().City == req.params.city) {
                     if (doc.data().IsAbleToDrive == req.params.isAbleToDrive) {
-                        output.push({
-                            id: doc.id,
-                            city: doc.data().City,
-                            created: doc.data().Created,
-                            deleted: doc.data().Deleted,
-                            description: doc.data().Description,
-                            endDate: doc.data().EndDate,
-                            isAbleToDrive: doc.data().IsAbleToDrive,
-                            isHit: doc.data().IsHit,
-                            isOnline: doc.data().IsOnline,
-                            levelId: doc.data().LevelID,
-                            price: doc.data().Price,
-                            range: doc.data().Range,
-                            startDate: doc.data().StartDate,
-                            status: doc.data().Status,
-                            subjectID: doc.data().SubjectID,
-                            tittle: doc.data().Tittle,
-                            type: doc.data().Type,
-                            userId: doc.data().UserID,
-                            viewsId: doc.data().ViewsID,
-                            province: doc.data().Province
-                        });
+                        output.push(helpers.getOutput(doc));
                     }
                 }
             });
@@ -382,28 +236,7 @@ router.get("/:city/isHit/:isHit", function (req, res, next) {
             snapshot.forEach(doc => {
                 if (doc.data().City == req.params.city) {
                     if (doc.data().IsHit == req.params.isHit) {
-                        output.push({
-                            id: doc.id,
-                            city: doc.data().City,
-                            created: doc.data().Created,
-                            deleted: doc.data().Deleted,
-                            description: doc.data().Description,
-                            endDate: doc.data().EndDate,
-                            isAbleToDrive: doc.data().IsAbleToDrive,
-                            isHit: doc.data().IsHit,
-                            isOnline: doc.data().IsOnline,
-                            levelId: doc.data().LevelID,
-                            price: doc.data().Price,
-                            range: doc.data().Range,
-                            startDate: doc.data().StartDate,
-                            status: doc.data().Status,
-                            subjectID: doc.data().SubjectID,
-                            tittle: doc.data().Tittle,
-                            type: doc.data().Type,
-                            userId: doc.data().UserID,
-                            viewsId: doc.data().ViewsID,
-                            province: doc.data().Province
-                        });
+                        output.push(helpers.getOutput(doc));
                     }
                 }
             });
@@ -430,28 +263,7 @@ router.get("/:city/isOnline/:isOnline", function (req, res, next) {
             snapshot.forEach(doc => {
                 if (doc.data().City == req.params.city) {
                     if (doc.data().IsOnline == req.params.isOnline) {
-                        output.push({
-                            id: doc.id,
-                            city: doc.data().City,
-                            created: doc.data().Created,
-                            deleted: doc.data().Deleted,
-                            description: doc.data().Description,
-                            endDate: doc.data().EndDate,
-                            isAbleToDrive: doc.data().IsAbleToDrive,
-                            isHit: doc.data().IsHit,
-                            isOnline: doc.data().IsOnline,
-                            levelId: doc.data().LevelID,
-                            price: doc.data().Price,
-                            range: doc.data().Range,
-                            startDate: doc.data().StartDate,
-                            status: doc.data().Status,
-                            subjectID: doc.data().SubjectID,
-                            tittle: doc.data().Tittle,
-                            type: doc.data().Type,
-                            userId: doc.data().UserID,
-                            viewsId: doc.data().ViewsID,
-                            province: doc.data().Province
-                        });
+                        output.push(helpers.getOutput(doc));
                     }
                 }
             });
@@ -479,28 +291,7 @@ router.get("/:city/isOnline/:isOnline/isHit/:isHit", function (req, res, next) {
                 if (doc.data().City == req.params.city) {
                     if (doc.data().IsOnline == req.params.isOnline) {
                         if (doc.data().IsHit == req.params.isHit) {
-                            output.push({
-                                id: doc.id,
-                                city: doc.data().City,
-                                created: doc.data().Created,
-                                deleted: doc.data().Deleted,
-                                description: doc.data().Description,
-                                endDate: doc.data().EndDate,
-                                isAbleToDrive: doc.data().IsAbleToDrive,
-                                isHit: doc.data().IsHit,
-                                isOnline: doc.data().IsOnline,
-                                levelId: doc.data().LevelID,
-                                price: doc.data().Price,
-                                range: doc.data().Range,
-                                startDate: doc.data().StartDate,
-                                status: doc.data().Status,
-                                subjectID: doc.data().SubjectID,
-                                tittle: doc.data().Tittle,
-                                type: doc.data().Type,
-                                userId: doc.data().UserID,
-                                viewsId: doc.data().ViewsID,
-                                province: doc.data().Province
-                            });
+                            output.push(helpers.getOutput(doc));
                         }
                     }
                 }
@@ -529,28 +320,7 @@ router.get("/:city/isOnline/:isOnline/isAbleToDrive/:isAbleToDrive", function (r
                 if (doc.data().City == req.params.city) {
                     if (doc.data().IsOnline == req.params.isOnline) {
                         if (doc.data().IsAbleToDrive == req.params.isAbleToDrive) {
-                            output.push({
-                                id: doc.id,
-                                city: doc.data().City,
-                                created: doc.data().Created,
-                                deleted: doc.data().Deleted,
-                                description: doc.data().Description,
-                                endDate: doc.data().EndDate,
-                                isAbleToDrive: doc.data().IsAbleToDrive,
-                                isHit: doc.data().IsHit,
-                                isOnline: doc.data().IsOnline,
-                                levelId: doc.data().LevelID,
-                                price: doc.data().Price,
-                                range: doc.data().Range,
-                                startDate: doc.data().StartDate,
-                                status: doc.data().Status,
-                                subjectID: doc.data().SubjectID,
-                                tittle: doc.data().Tittle,
-                                type: doc.data().Type,
-                                userId: doc.data().UserID,
-                                viewsId: doc.data().ViewsID,
-                                province: doc.data().Province
-                            });
+                            output.push(helpers.getOutput(doc));
                         }
                     }
                 }
@@ -580,28 +350,7 @@ router.get("/:city/isOnline/:isOnline/isAbleToDrive/:isAbleToDrive/isHit/:isHit"
                     if (doc.data().IsOnline == req.params.isOnline) {
                         if (doc.data().IsAbleToDrive == req.params.isAbleToDrive) {
                             if (doc.data().IsHit == req.params.isHit) {
-                                output.push({
-                                    id: doc.id,
-                                    city: doc.data().City,
-                                    created: doc.data().Created,
-                                    deleted: doc.data().Deleted,
-                                    description: doc.data().Description,
-                                    endDate: doc.data().EndDate,
-                                    isAbleToDrive: doc.data().IsAbleToDrive,
-                                    isHit: doc.data().IsHit,
-                                    isOnline: doc.data().IsOnline,
-                                    levelId: doc.data().LevelID,
-                                    price: doc.data().Price,
-                                    range: doc.data().Range,
-                                    startDate: doc.data().StartDate,
-                                    status: doc.data().Status,
-                                    subjectID: doc.data().SubjectID,
-                                    tittle: doc.data().Tittle,
-                                    type: doc.data().Type,
-                                    userId: doc.data().UserID,
-                                    viewsId: doc.data().ViewsID,
-                                    province: doc.data().Province
-                                });
+                                output.push(helpers.getOutput(doc));
                             }
                         }
                     }
@@ -631,28 +380,7 @@ router.get("/:city/isAbleToDrive/:isAbleToDrive/isHit/:isHit", function (req, re
                 if (doc.data().City == req.params.city) {
                     if (doc.data().IsAbleToDrive == req.params.isAbleToDrive) {
                         if (doc.data().IsHit == req.params.isHit) {
-                            output.push({
-                                id: doc.id,
-                                city: doc.data().City,
-                                created: doc.data().Created,
-                                deleted: doc.data().Deleted,
-                                description: doc.data().Description,
-                                endDate: doc.data().EndDate,
-                                isAbleToDrive: doc.data().IsAbleToDrive,
-                                isHit: doc.data().IsHit,
-                                isOnline: doc.data().IsOnline,
-                                levelId: doc.data().LevelID,
-                                price: doc.data().Price,
-                                range: doc.data().Range,
-                                startDate: doc.data().StartDate,
-                                status: doc.data().Status,
-                                subjectID: doc.data().SubjectID,
-                                tittle: doc.data().Tittle,
-                                type: doc.data().Type,
-                                userId: doc.data().UserID,
-                                viewsId: doc.data().ViewsID,
-                                province: doc.data().Province
-                            });
+                            output.push(helpers.getOutput(doc));
                         }
 
                     }

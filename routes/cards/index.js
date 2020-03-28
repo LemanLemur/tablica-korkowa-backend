@@ -3,6 +3,8 @@ var router = express.Router();
 var routerUsers = require('./users');
 var routerCity = require('./city');
 
+var helpers = require('./helpers/output');
+
 /* GET Levels listing. */
 
 router.use("/city", routerCity);
@@ -18,28 +20,7 @@ router.get("/", function (req, res, next) {
     .then(snapshot => {
       if (snapshot) {
         snapshot.forEach(doc => {
-          output.push({
-            id: doc.id,
-            city: doc.data().City,
-            created: doc.data().Created,
-            deleted: doc.data().Deleted,
-            description: doc.data().Description,
-            endDate: doc.data().EndDate,
-            isAbleToDrive: doc.data().IsAbleToDrive,
-            isHit: doc.data().IsHit,
-            isOnline: doc.data().IsOnline,
-            levelId: doc.data().LevelID,
-            price: doc.data().Price,
-            range: doc.data().Range,
-            startDate: doc.data().StartDate,
-            status: doc.data().Status,
-            subjectID: doc.data().SubjectID,
-            tittle: doc.data().Tittle,
-            type: doc.data().Type,
-            userId: doc.data().UserID,
-            viewsId: doc.data().ViewsID,
-            province: doc.data().Province
-          });
+          output.push(helpers.getOutput(doc));
         });
         return res.status(200).json(output);
       } else {
@@ -62,28 +43,7 @@ router.get("/:id", function (req, res, next) {
     .then(snapshot => {
       snapshot.forEach(doc => {
         if (doc.id == req.params.id) {
-          output.push({
-            id: doc.id,
-            city: doc.data().City,
-            created: doc.data().Created,
-            deleted: doc.data().Deleted,
-            description: doc.data().Description,
-            endDate: doc.data().EndDate,
-            isAbleToDrive: doc.data().IsAbleToDrive,
-            isHit: doc.data().IsHit,
-            isOnline: doc.data().IsOnline,
-            levelId: doc.data().LevelID,
-            price: doc.data().Price,
-            range: doc.data().Range,
-            startDate: doc.data().StartDate,
-            status: doc.data().Status,
-            subjectID: doc.data().SubjectID,
-            tittle: doc.data().Tittle,
-            type: doc.data().Type,
-            userId: doc.data().UserID,
-            viewsId: doc.data().ViewsID,
-            province: doc.data().Province
-          });
+          output.push(helpers.getOutput(doc));
         }
       });
       if (output.length === 0) {
