@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-router.get("/name/:name", function(req, res, next) {
+router.get("/:name", function(req, res, next) {
     const db = req.app.get("db");
     var output = [];
   
@@ -28,5 +28,5 @@ router.get("/name/:name", function(req, res, next) {
           .json({ message: "Unable to connect to Firestore." });
       });
   });
-  
+
   module.exports = router;
