@@ -106,7 +106,7 @@ router.put("/:id", (req, res) => {
       });
   }
 });
-
+//http://localhost:3001/views/increment/Pl2TZDoK9XC9vHlTIFbB
 router.use("/increment", routerIncrement); 
 
 /* DELETE Views listing. */
