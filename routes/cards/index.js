@@ -9,7 +9,7 @@ var helpers = require('./helpers/output');
 
 /*
 !!!!!!!!KOLEJNOŚĆ ZAPYTAŃ DLA CARDS!!!!!!!!!!
-/province/city/subjectID/levelID/type/isAbleToDrive/isOnline/isHit
+/province/city/subjectID/levelID/type/status/isAbleToDrive/isOnline/isHit
 
 */
 
