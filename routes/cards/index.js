@@ -4,7 +4,7 @@ var routerUsers = require('./users');
 var routerCity = require('./city');
 var routerProvince = require('./province');
 var helpers = require('./helpers/output');
-
+var moment = require('moment');
 /* GET Levels listing. */
 
 /*
@@ -88,13 +88,13 @@ POST localhost:3001/cards/ -> Body -> raw -> JSON
 */
 
 router.post("/", (req, res) => {
-  console.log(req.body)
+  const m = moment(new Date(req.body.startDate)).startOf('day').utcOffset("+05:30").format("DD/MM/YYYY HH/mm/ss")
   const db = req.app.get("db");
-  const db2 = req.app.get("db");
   let description = req.body.description;
   let startDate = req.body.startDate
-  let endDate = req.body.startDate + 2678400; // 31 dni
-  let created = new Date();
+  let endDate = req.body.startDate + 2592000 // 30dni
+  //let created = moment().format("DD/MM/YYYY HH/mm/ss") ;
+  let created = moment().unix() ;
   let isdeleted = null;
   let isHit = req.body.isHit;
   let status = 1; //active
@@ -105,11 +105,9 @@ router.post("/", (req, res) => {
   let range = req.body.range
   let city = req.body.city
   let province = req.body.province
-  let viewsID
   let isOnline = req.body.isOnline
   let levelID = req.body.levelID
   let subjectID = req.body.subjectID
-
   return new Promise(function (resolve, reject) {
   db.collection("Views")
     .add({
@@ -146,7 +144,7 @@ router.post("/", (req, res) => {
         Range: range,
         City: city,
         Province: province,
-        //ViewsID: viewsIDFromPromise,
+        ViewsID: viewsIDFromPromise,
         IsOnline: isOnline,
         LevelID: levelID,
         SubjectID: subjectID
