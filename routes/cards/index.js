@@ -65,12 +65,36 @@ router.get("/:id", function (req, res, next) {
     });
 });
 
+
+/*
+POSTMAN -> 
+POST localhost:3001/cards/ -> Body -> raw -> JSON
+{
+	"description": "jakis opis",
+	"startDate" : "17.03.2020 7:12:00 PM",
+	"isHit": true,
+	"userID": "wisBxHFFr8dztgSpLBao",
+	"type": 0,
+	"price": 20,
+	"isAbleToDrive": true,
+	"range": 5,
+	"city": "Toruń",
+	"province": "Kujawsko-pomorskie",
+	"isOnline": true,
+	"levelID": "skh0Rn1rvXI5rAeF8sjJ",
+	"subjectID": "5e04d570-6dfd-11ea-a51a-e92f5d354da7"
+}
+
+*/
+
 router.post("/", (req, res) => {
+  console.log(req.body)
   const db = req.app.get("db");
+  const db2 = req.app.get("db");
   let description = req.body.description;
   let startDate = req.body.startDate
   let endDate = req.body.startDate + 2678400; // 31 dni
-  let created = new Date.now();
+  let created = new Date();
   let isdeleted = null;
   let isHit = req.body.isHit;
   let status = 1; //active
@@ -86,13 +110,14 @@ router.post("/", (req, res) => {
   let levelID = req.body.levelID
   let subjectID = req.body.subjectID
 
+  return new Promise(function (resolve, reject) {
   db.collection("Views")
     .add({
       value: 0,
     })
     .then(ref => {
       if (ref.id) {
-        viewsID = ref.id
+        resolve(ref.id)
       } else {
         return res.status(400).json({ message: "Something went wrong." });
       }
@@ -103,40 +128,44 @@ router.post("/", (req, res) => {
         .json({ message: "Unable to connect to Firestore." });
     });
 
+  }).then( viewsIDFromPromise=> {
+    console.log(viewsIDFromPromise)
+    db.collection("Card")
+      .add({
+        Description: description,
+        StartDate: startDate,
+        EndDate: endDate,
+        Created: created,
+        Deleted: isdeleted,
+        IsHit: isHit,
+        Status: status,
+        UserID: userID,
+        Type: type,
+        Price: price,
+        IsAbleToDrive: isAbleToDrive,
+        Range: range,
+        City: city,
+        Province: province,
+        //ViewsID: viewsIDFromPromise,
+        IsOnline: isOnline,
+        LevelID: levelID,
+        SubjectID: subjectID
+      })
+      .then(ref => {
+        if (ref.id) {
+          return res.status(200).json({ id: ref.id });
+        } else {
+          return res.status(400).json({ message: "Something went wrong." });
+        }
+      })
+      .catch(error => {
+        return res
+          .status(400)
+          .json({ message: "Unable to connect to Firestore." });
+      });
 
-  db.collection("Users")
-    .add({
-      Description: description,
-      StartDate: startDate,
-      EndDate: endDate,
-      Created: created,
-      Deleted: isdeleted,
-      IsHit: isHit,
-      Status: status,
-      UserID: userID,
-      Type: type,
-      Price: price,
-      IsAbleToDrive: isAbleToDrive,
-      Range: range,
-      City: city,
-      Province: province,
-      ViewsID: viewsID,
-      IsOnline: isOnline,
-      LevelID: levelID,
-      SubjectID: subjectID
-    })
-    .then(ref => {
-      if (ref.id) {
-        return res.status(200).json({ id: ref.id });
-      } else {
-        return res.status(400).json({ message: "Something went wrong." });
-      }
-    })
-    .catch(error => {
-      return res
-        .status(400)
-        .json({ message: "Unable to connect to Firestore." });
-    });
+  })
+    
 });
 
 module.exports = router;

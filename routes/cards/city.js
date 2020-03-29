@@ -73,11 +73,32 @@ function getSubjectName(SubjectID, req) {
     })
 
 }
+
+db.collection("Card")
+        .get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                if (doc.data().City == req.params.city) {
+                    output.push(helpers.getOutput(doc));
+                }
+            });
+            functions.checkStatusAndReturnJson(output, res)
+        })
+        .catch(error => {
+            return res
+                .status(400)
+                .json({ message: "Unable to connect to Firestore." });
+        });
 */
+const readIds = async (collection, ids) => {
+    const reads = ids.map(id => collection.doc(id).get());
+    const result = await Promise.all(reads);
+    return resulkt
+}
+
 router.get("/:city", function (req, res, next) {
     const db = req.app.get("db");
     var output = [];
-
     db.collection("Card")
         .get()
         .then(snapshot => {
