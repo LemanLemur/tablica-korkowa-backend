@@ -50,12 +50,11 @@ router.get("/:province", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    output.push(helpers.getOutput(doc))
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -71,14 +70,12 @@ router.get("/:province/city/:city", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        output.push(helpers.getOutput(doc))
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -94,14 +91,12 @@ router.get("/:province/subjectID/:subjectID", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('SubjectID', '==', req.params.subjectID)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().SubjectID == req.params.subjectID) {
-                        output.push(helpers.getOutput(doc))
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -117,14 +112,12 @@ router.get("/:province/levelID/:levelID", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('LevelID', '==', req.params.levelID)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().LevelID == req.params.levelID) {
-                        output.push(helpers.getOutput(doc))
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -140,14 +133,12 @@ router.get("/:province/type/:type", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('Type', '==', req.params.type)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().Type == req.params.type) {
-                        output.push(helpers.getOutput(doc))
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -163,14 +154,12 @@ router.get("/:province/status/:status", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().Status == req.params.status) {
-                        output.push(helpers.getOutput(doc))
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -186,16 +175,13 @@ router.get("/:province/city/:city/subjectID/:subjectID", function (req, res, nex
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -211,16 +197,13 @@ router.get("/:province/city/:city/levelID/:levelID", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('LevelID', '==', req.params.levelID)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().LevelID == req.params.levelID) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -236,16 +219,13 @@ router.get("/:province/city/:city/type/:type", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('Type', '==', req.params.type)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().Type == req.params.type) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -261,16 +241,13 @@ router.get("/:province/city/:city/status/:status", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().Status == req.params.status) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -286,41 +263,13 @@ router.get("/:province/subjectID/:subjectID/levelID/:levelID", function (req, re
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('LevelID', '==', req.params.levelID)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().SubjectID == req.params.subjectID) {
-                        if (doc.data().LevelID == req.params.levelID) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
-            });
-            functions.checkStatusAndReturnJson(output, res)
-        })
-        .catch(error => {
-            return res
-                .status(400)
-                .json({ message: "Unable to connect to Firestore." });
-        });
-});
-
-router.get("/:province/subjectID/:subjectID/levelID/:levelID", function (req, res, next) {
-    const db = req.app.get("db");
-    var output = [];
-
-    db.collection("Card")
-        .get()
-        .then(snapshot => {
-            snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().SubjectID == req.params.subjectID) {
-                        if (doc.data().LevelID == req.params.levelID) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -336,16 +285,13 @@ router.get("/:province/subjectID/:subjectID/type/:type", function (req, res, nex
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('Type', '==', req.params.type)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().SubjectID == req.params.subjectID) {
-                        if (doc.data().Type == req.params.type) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -361,16 +307,13 @@ router.get("/:province/subjectID/:subjectID/status/:status", function (req, res,
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().SubjectID == req.params.subjectID) {
-                        if (doc.data().Status == req.params.status) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -385,16 +328,13 @@ router.get("/:province/levelID/:levelID/type/:type", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('Type', '==', req.params.type)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().LevelID == req.params.levelID) {
-                        if (doc.data().Type == req.params.type) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -410,16 +350,13 @@ router.get("/:province/levelID/:levelID/status/:status", function (req, res, nex
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('LevelID', '==', req.params.levelID)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().LevelID == req.params.levelID) {
-                        if (doc.data().Status == req.params.status) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -435,16 +372,13 @@ router.get("/:province/type/:type/status/:status", function (req, res, next) {
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('Type', '==', req.params.type)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().Type == req.params.type) {
-                        if (doc.data().Status == req.params.status) {
-                            output.push(helpers.getOutput(doc))
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -460,18 +394,14 @@ router.get("/:province/city/:city/subjectID/:subjectID/levelID/:levelID", functi
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('LevelID', '==', req.params.levelID)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().LevelID == req.params.levelID) {
-                                output.push(helpers.getOutput(doc))
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -487,18 +417,14 @@ router.get("/:province/city/:city/subjectID/:subjectID/type/:type", function (re
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('Type', '==', req.params.type)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().Type == req.params.type) {
-                                output.push(helpers.getOutput(doc))
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -514,18 +440,14 @@ router.get("/:province/city/:city/subjectID/:subjectID/status/:status", function
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().Status == req.params.status) {
-                                output.push(helpers.getOutput(doc))
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -541,18 +463,14 @@ router.get("/:province/city/:city/levelID/:levelID/type/:type", function (req, r
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('LevelID', '==', req.params.levelID)
+        .where('Type', '==', req.params.type)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().LevelID == req.params.levelID) {
-                            if (doc.data().Type == req.params.type) {
-                                output.push(helpers.getOutput(doc))
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -568,18 +486,14 @@ router.get("/:province/city/:city/levelID/:levelID/status/:status", function (re
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('LevelID', '==', req.params.levelID)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().LevelID == req.params.levelID) {
-                            if (doc.data().Status == req.params.status) {
-                                output.push(helpers.getOutput(doc))
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -595,18 +509,14 @@ router.get("/:province/city/:city/type/:type/status/:status", function (req, res
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('Type', '==', req.params.type)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().Type == req.params.type) {
-                            if (doc.data().Status == req.params.status) {
-                                output.push(helpers.getOutput(doc))
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -622,21 +532,15 @@ router.get("/:province/city/:city/subjectID/:subjectID/levelID/LevelID/status/:s
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('LevelID', '==', req.params.levelID)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().LevelID == req.params.levelID) {
-                                if (doc.data().Status == req.params.status) {
-                                        output.push(helpers.getOutput(doc))
-                                    
-                                }
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -652,21 +556,17 @@ router.get("/:province/city/:city/subjectID/:subjectID/levelID/LevelID/type/:typ
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('LevelID', '==', req.params.levelID)
+        .where('Type', '==', req.params.type)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().LevelID == req.params.levelID) {
-                                if (doc.data().Type == req.params.type) {
-                                        output.push(helpers.getOutput(doc))
-                                    
-                                }
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
+
+
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -682,22 +582,16 @@ router.get("/:province/city/:city/subjectID/:subjectID/levelID/LevelID/type/:typ
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('LevelID', '==', req.params.levelID)
+        .where('Type', '==', req.params.type)
+        .where('Status', '==', req.params.status)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().LevelID == req.params.levelID) {
-                                if (doc.data().Type == req.params.type) {
-                                    if (doc.data().Status == req.params.status) {
-                                        output.push(helpers.getOutput(doc))
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -713,18 +607,14 @@ router.get("/:province/city/:city/subjectID/:subjectID/isAbleToDrive/:isAbleToDr
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().IsAbleToDrive == req.params.isAbleToDrive) {
-                                output.push(helpers.getOutput(doc))
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -740,18 +630,14 @@ router.get("/:province/city/:city/subjectID/:subjectID/isOnline/:isOnline", func
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('IsOnline', '==', req.params.isOnline)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().IsOnline == req.params.isOnline) {
-                                output.push(helpers.getOutput(doc))
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -767,18 +653,14 @@ router.get("/:province/city/:city/subjectID/:subjectID/isHit/:isHit", function (
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('IsHit', '==', req.params.isHit)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().IsHit == req.params.isHit) {
-                                output.push(helpers.getOutput(doc))
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
@@ -794,20 +676,15 @@ router.get("/:province/city/:city/subjectID/:subjectID/levelID/:levelID/type/:ty
     var output = [];
 
     db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('LevelID', '==', req.params.levelID)
+        .where('Type', '==', req.params.type)
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                if (doc.data().Province == req.params.province) {
-                    if (doc.data().City == req.params.city) {
-                        if (doc.data().SubjectID == req.params.subjectID) {
-                            if (doc.data().LevelID == req.params.levelID) {
-                                if (doc.data().Type == req.params.type) {
-                                    output.push(helpers.getOutput(doc))
-                                }
-                            }
-                        }
-                    }
-                }
+                output.push(helpers.getOutput(doc))
             });
             functions.checkStatusAndReturnJson(output, res)
         })
