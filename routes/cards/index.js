@@ -45,12 +45,11 @@ router.get("/:id", function (req, res, next) {
   var output = [];
 
   db.collection("Card")
+    .doc(req.params.id)
     .get()
     .then(snapshot => {
       snapshot.forEach(doc => {
-        if (doc.id == req.params.id) {
           output.push(helpers.getOutput(doc));
-        }
       });
       if (output.length === 0) {
         return res.status(404).json({ message: "Any levels not found." });

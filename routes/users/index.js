@@ -41,7 +41,7 @@ router.get("/:id", function(req, res, next) {
   var output = [];
 
   db.collection("Users")
-    .where('AccountID', '==', req.params.id)
+    .doc(req.params.id)
     .get()
     .then(snapshot => {
       snapshot.forEach(doc => {
@@ -183,6 +183,23 @@ router.put("/lastlogged/:id", (req, res) => {
     )
     .then(() => {
       return res.status(200).json({ message: "Data updated." });
+    })
+    .catch(error => {
+      return res
+        .status(400)
+        .json({ message: "Unable to connect to Firestore." });
+    });
+});
+
+/* PUT */
+
+router.delete("/:id", (req, res) => {
+  const db = req.app.get("db");
+
+  db.collection("Users")
+    .delete(req.params.id)
+    .then(() => {
+      return res.status(200).json({ message: "User deleted." });
     })
     .catch(error => {
       return res

@@ -15,7 +15,7 @@ module.exports = {
           });
           return res.status(200).json(output);
         } else {
-          return res.status(404).json({ message: "Any levels not found." });
+          return res.status(404).json({ message: "Any views not found." });
         }
       })
       .catch(error => {
@@ -34,34 +34,10 @@ module.exports = {
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
-          output.push(helpers.getOutput(doc));
+            output.push(helpers.getOutput(doc));
         });
         if (output.length === 0) {
-          return res.status(404).json({ message: "Any levels not found." });
-        } else {
-          return res.status(200).json(output);
-        }
-      })
-      .catch(error => {
-        return res
-          .status(400)
-          .json({ message: "Unable to connect to Firestore." });
-      });
-  },
-
-  getByName: function(req, res) {
-    const db = req.app.get("db");
-    var output = [];
-
-    db.collection("Subject")
-      .where("Name", "==", req.params.name)
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          output.push(helpers.getOutput(doc));
-        });
-        if (output.length === 0) {
-          return res.status(404).json({ message: "Any subjects not found." });
+          return res.status(404).json({ message: "Any views not found." });
         } else {
           return res.status(200).json(output);
         }
