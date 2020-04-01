@@ -41,10 +41,10 @@ router.get("/:id", function(req, res, next) {
   var output = [];
 
   db.collection("Users")
+    .where('AccountID', '==', req.params.id)
     .get()
     .then(snapshot => {
       snapshot.forEach(doc => {
-        if (doc.id == req.params.id) {
           output.push({
             id: doc.id,
             accountId: doc.data().AccountID,
@@ -57,7 +57,6 @@ router.get("/:id", function(req, res, next) {
             telephone: doc.data().Telephone,
             updated: doc.data().Updated
           });
-        }
       });
       if (output.length === 0) {
         return res.status(404).json({ message: "Any Users not found." });
@@ -137,19 +136,26 @@ router.post("/", (req, res) => {
     });
 });
 
+/* PUT */
+
 router.put("/:id", (req, res) => {
   const db = req.app.get("db");
   let timestamp = new Date();
+  let firstname = req.body.firstname;
+  let lastname = req.body.lastname;
+  let telephone = req.body.telephone;
+  let avatar = req.body.avatar;
+  var update = {};
+
+  update["Updated"] = timestamp;
+  if (firstname) update["FirstName"] = firstname;
+  if (lastname) update["LastName"] = lastname;
+  if (telephone) update["Telephone"] = telephone;
+  if (avatar) update["Avatar"] = avatar;
 
   db.collection("Users")
     .doc(req.params.id)
-    .set(
-      {
-        Updated: timestamp
-      },
-      {
-        merge: true
-      }
+    .set(update, {merge: true}
     )
     .then(() => {
       return res.status(200).json({ message: "Data updated." });
