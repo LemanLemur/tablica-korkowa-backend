@@ -685,6 +685,38 @@ router.get("/:city/isOnline/:isOnline/isAbleToDrive/:isAbleToDrive", function (r
         });
 });
 
+router.get("/countCards", function (req, res, next) {
+    const db = req.app.get("db");
+
+    db.collection("Card")
+        .get()
+        .then(snapshot => {
+            return res.status(200).json({message: snapshot.size});
+        })
+        .catch(error => {
+            return res
+                .status(400)
+                .json({ message: "Unable to connect to Firestore." });
+        });
+});
+
+
+router.get("/:city/countCards", function (req, res, next) {
+    const db = req.app.get("db");
+
+    db.collection("Card")
+    .where('City', '==', req.params.city)
+        .get()
+        .then(snapshot => {
+            res.status(200).json({message: snapshot.size});
+        })
+        .catch(error => {
+            return res
+                .status(400)
+                .json({ message: "Unable to connect to Firestore." });
+        });
+});
+
 router.get("/:city/isOnline/:isOnline/isAbleToDrive/:isAbleToDrive/isHit/:isHit", function (req, res, next) {
     const db = req.app.get("db");
     var output = [];

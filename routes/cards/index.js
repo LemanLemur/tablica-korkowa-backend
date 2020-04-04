@@ -44,12 +44,83 @@ router.get("/:id", function (req, res, next) {
   const db = req.app.get("db");
   var output = [];
 
+  return new Promise(function (resolve, reject) {
+    db.collection("Card")
+      .doc(req.params.id)
+      .get()
+      .then(snapshot => {
+        resolve(snapshot)
+        if (output.length === 0) {
+          return res.status(404).json({ message: "Any levels not found." });
+        }
+      })
+      .catch(error => {
+        return res
+          .status(400)
+          .json({ message: "Unable to connect to Firestore." });
+      });
+  }).then(snapshot => {
+    snapshot.forEach(doc => {
+      db.collection("Users")
+        .doc(doc.UserId)
+        .get()
+        .then(snapshot2 => {
+          snapshot2.forEach(doc2 => {
+            output.push({
+              id: doc.id,
+              city: doc.data().City,
+              created: doc.data().Created,
+              deleted: doc.data().Deleted,
+              description: doc.data().Description,
+              endDate: doc.data().EndDate,
+              isAbleToDrive: doc.data().IsAbleToDrive,
+              isHit: doc.data().IsHit,
+              isOnline: doc.data().IsOnline,
+              levelId: doc.data().LevelID,
+              price: doc.data().Price,
+              range: doc.data().Range,
+              startDate: doc.data().StartDate,
+              status: doc.data().Status,
+              subjectID: doc.data().SubjectID,
+              tittle: doc.data().Tittle,
+              type: doc.data().Type,
+              userId: doc.data().UserID,
+              viewsId: doc.data().ViewsID,
+              province: doc.data().Province,
+              avatar: doc2.data().Avatar
+            });
+          });
+
+          if (output.length === 0) {
+            return res.status(404).json({ message: "Any levels not found." });
+          } else {
+            return res.status(200).json(output);
+          }
+        })
+        .catch(error => {
+          return res
+            .status(400)
+            .json({ message: "Unable to connect to Firestore." });
+        });
+    });
+
+
+
+
+  })
+});
+
+router.get("/newestCards/:number", function (req, res, next) {
+  const db = req.app.get("db");
+  var output = [];
+
   db.collection("Card")
-    .doc(req.params.id)
+    .where('StartDate', '<=', moment().unix())
+    .orderBy('StartDate', 'desc').limit(parseInt(req.params.number))
     .get()
     .then(snapshot => {
       snapshot.forEach(doc => {
-          output.push(helpers.getOutput(doc));
+        output.push(helpers.getOutput(doc));
       });
       if (output.length === 0) {
         return res.status(404).json({ message: "Any levels not found." });
@@ -63,7 +134,6 @@ router.get("/:id", function (req, res, next) {
         .json({ message: "Unable to connect to Firestore." });
     });
 });
-
 
 /*
 POSTMAN -> 
@@ -278,7 +348,7 @@ router.put("/:id", (req, res) => {
   let tmp_status = req.body.status;
   let tmp_subjectID = req.body.subjectID;
   let tmp_levelID = req.body.tmp_levelID;
-  
+
   var update = {};
 
   if (tmp_description) update["Description"] = tmp_description;
