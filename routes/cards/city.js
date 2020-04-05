@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var helpers = require("./helpers/output");
+var importantOutput = require("./helpers/getImportantOutput");
 var functions = require("./helpers/functions");
 
 /*
@@ -102,10 +103,9 @@ router.get("/:city", function (req, res, next) {
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
-                console.log(doc.data().City)
                 output.push(helpers.getOutput(doc));
-
             });
+            console.log(output)
             functions.checkStatusAndReturnJson(output, res)
         })
         .catch(error => {

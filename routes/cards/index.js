@@ -4,6 +4,7 @@ var routerUsers = require('./users');
 var routerCity = require('./city');
 var routerProvince = require('./province');
 var helpers = require('./helpers/output');
+var importantOutput = require("./helpers/getImportantOutput");
 var moment = require('moment');
 /* GET Levels listing. */
 
@@ -113,27 +114,42 @@ router.get("/:id", function (req, res, next) {
 router.get("/newestCards/:number", function (req, res, next) {
   const db = req.app.get("db");
   var output = [];
+  var count = 0
+  return new Promise(function (resolve, reject) {
+    db.collection("Card")
+      .where('StartDate', '<=', moment().unix())
+      //.where('Status', '==', 2)
+      .orderBy('StartDate', 'desc').limit(parseInt(req.params.number))
+      .get()
+      .then(snapshot => {
+        snapshot.forEach(document => {
+          return new Promise(function (resolve2, reject) {
+            db.collection("Subject")
+              .doc(document.data().SubjectID)
+              .get()
+              .then(snapshot2 => {
+                
+                resolve2(snapshot2.data().Name)
+              })
 
-  db.collection("Card")
-    .where('StartDate', '<=', moment().unix())
-    .orderBy('StartDate', 'desc').limit(parseInt(req.params.number))
-    .get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-        output.push(helpers.getOutput(doc));
-      });
+          }).then(SubjectName => {
+            count = count + 1
+            output.push(importantOutput.getImportantOutput(document, SubjectName));
+            if(count == req.params.number)
+            {
+              resolve(output)
+            }
+          })
+        })
+      })
+    }).then(x => {
       if (output.length === 0) {
         return res.status(404).json({ message: "Any levels not found." });
       } else {
-        return res.status(200).json(output);
+        return res.status(200).json(x);
       }
     })
-    .catch(error => {
-      return res
-        .status(400)
-        .json({ message: "Unable to connect to Firestore." });
-    });
-});
+  })
 
 /*
 POSTMAN -> 
