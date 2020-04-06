@@ -1,14 +1,15 @@
 module.exports = {
-    getImportantOutput: function(req, Name) {
+    getImportantOutput: function(req, Name, Avatar, Level) {
       return Object.freeze({
         id: req.id,
         city: req.data().City,
         endDate: req.data().EndDate,
-        levelId: req.data().LevelID,
+        level: Level,
         price: req.data().Price,
         subject: Name,
         tittle: req.data().Tittle,
-        type: req.data().Type
+        type: req.data().Type,
+        avatar: Avatar
       });
     }
   };

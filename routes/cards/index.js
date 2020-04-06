@@ -128,22 +128,44 @@ router.get("/newestCards/:number", function (req, res, next) {
               .doc(document.data().SubjectID)
               .get()
               .then(snapshot2 => {
-                
+                //console.log(snapshot2.data().Name)
                 resolve2(snapshot2.data().Name)
               })
 
           }).then(SubjectName => {
-            count = count + 1
-            output.push(importantOutput.getImportantOutput(document, SubjectName));
-            if(count == req.params.number)
-            {
-              resolve(output)
-            }
+            
+              db.collection("Users")
+              .where('AccountID', '==', document.data().UserID)
+                .get()
+                .then(snapshot3 => { 
+                  snapshot3.forEach(document3 => {
+                    return new Promise(function (resolve3, reject) {
+                    //console.log(document3.data().Avatar)
+                    resolve3(document3.data().Avatar)
+                  }).then( avatar => {
+                    db.collection("Level")
+                    .doc(document.data().LevelID)
+                      .get()
+                      .then(snapshot4 => { 
+                          return new Promise(function (resolve4, reject) {
+                          resolve4(snapshot4.data().Value)
+                          }).then(level => {
+                            count = count + 1
+                            output.push(importantOutput.getImportantOutput(document, SubjectName, avatar, level));
+                            if(count == req.params.number)
+                            {
+                              resolve(output)
+                            }
+                          })
+                        })
+                  })
+                })
+            })
           })
         })
       })
     }).then(x => {
-      if (output.length === 0) {
+      if (x.length === 0) {
         return res.status(404).json({ message: "Any levels not found." });
       } else {
         return res.status(200).json(x);
