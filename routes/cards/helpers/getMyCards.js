@@ -1,6 +1,5 @@
 module.exports = {
-    //getImportantOutput: function(req, Name, Avatar, Level) {
-    getImportantOutput: function(req, Avatar, Level) {
+    getMyCards: function(req, Avatar, Level) {
       return Object.freeze({
         id: req.id,
         city: req.data().City,
@@ -9,6 +8,7 @@ module.exports = {
         price: req.data().Price,
         //subject: Name,
         tittle: req.data().Tittle,
+        status: req.data().Status,
         type: req.data().Type,
         avatar: Avatar
       });

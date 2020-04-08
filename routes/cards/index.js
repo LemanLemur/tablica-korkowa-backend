@@ -115,24 +115,28 @@ router.get("/newestCards/:number", function (req, res, next) {
   const db = req.app.get("db");
   var output = [];
   var count = 0
+  var iteration = 0
   return new Promise(function (resolve, reject) {
     db.collection("Card")
       .where('StartDate', '<=', moment().unix())
-      //.where('Status', '==', 2)
+      .where('Status', '==', 2)
       .orderBy('StartDate', 'desc').limit(parseInt(req.params.number))
       .get()
       .then(snapshot => {
+        snapshot.forEach(x => {
+          count++  
+        })
         snapshot.forEach(document => {
-          return new Promise(function (resolve2, reject) {
-            db.collection("Subject")
-              .doc(document.data().SubjectID)
-              .get()
-              .then(snapshot2 => {
+          //return new Promise(function (resolve2, reject) {
+            //db.collection("Subject")
+              //.doc(document.data().SubjectID)
+              //.get()
+              //.then(snapshot2 => {
                 //console.log(snapshot2.data().Name)
-                resolve2(snapshot2.data().Name)
-              })
+                //resolve2(snapshot2.data().Name)
+             // })
 
-          }).then(SubjectName => {
+          //}).then(SubjectName => {
             
               db.collection("Users")
               .where('AccountID', '==', document.data().UserID)
@@ -150,9 +154,11 @@ router.get("/newestCards/:number", function (req, res, next) {
                           return new Promise(function (resolve4, reject) {
                           resolve4(snapshot4.data().Value)
                           }).then(level => {
-                            count = count + 1
-                            output.push(importantOutput.getImportantOutput(document, SubjectName, avatar, level));
-                            if(count == req.params.number)
+                            //output.push(importantOutput.getImportantOutput(document, SubjectName, avatar, level));
+                            output.push(importantOutput.getImportantOutput(document, avatar, level));
+                            iteration++
+                            console.log(count, iteration)
+                            if(count == iteration)
                             {
                               resolve(output)
                             }
@@ -161,7 +167,7 @@ router.get("/newestCards/:number", function (req, res, next) {
                   })
                 })
             })
-          })
+          //})
         })
       })
     }).then(x => {
