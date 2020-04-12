@@ -209,13 +209,38 @@ router.put("/lastlogged/:id", (req, res) => {
 
 /* DELETE */
 
-router.delete("/:id", (req, res) => {
+router.delete("/perm/:id", (req, res) => {
   const db = req.app.get("db");
 
   db.collection("Users")
     .delete(req.params.id)
     .then(() => {
       return res.status(200).json({ message: "User deleted." });
+    })
+    .catch((error) => {
+      return res
+        .status(400)
+        .json({ message: "Unable to connect to Firestore." });
+    });
+});
+
+router.delete("/:id", (req, res) => {
+  const db = req.app.get("db");
+  let timestamp = new Date();
+
+  db.collection("Users")
+    .doc(req.params.id)
+    .set(
+      {
+        AccountID: "",
+        Deleted: timestamp,
+      },
+      {
+        merge: true,
+      }
+    )
+    .then(() => {
+      return res.status(200).json({ message: "Data deleted." });
     })
     .catch((error) => {
       return res
