@@ -11,7 +11,8 @@ module.exports = {
         tittle: req.data().Tittle,
         status: req.data().Status,
         type: req.data().Type,
-        avatar: Avatar
+        avatar: Avatar,
+        userID: req.data().UserID
       });
     }
   };

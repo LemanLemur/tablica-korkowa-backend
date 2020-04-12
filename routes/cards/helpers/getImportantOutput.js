@@ -11,7 +11,8 @@ module.exports = {
         //subject: Name,
         tittle: req.data().Tittle,
         type: req.data().Type,
-        avatar: Avatar
+        avatar: Avatar,
+        userID: req.data().UserID
       });
     }
   };

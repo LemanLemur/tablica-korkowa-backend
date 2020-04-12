@@ -108,7 +108,7 @@ router.get("/:userID/status/:status", function (req, res, next) {
               subjectID: doc.data().SubjectID,
               tittle: doc.data().Tittle,
               type: doc.data().Type,
-              userId: doc.data().UserId,
+              userID: doc.data().UserID,
               viewsId: doc.data().ViewsId,
               province: doc.data().Province,
             });
