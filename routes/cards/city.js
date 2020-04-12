@@ -164,7 +164,7 @@ router.get("/:city/type/:type", function (req, res, next) {
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -185,7 +185,7 @@ router.get("/:city/status/:status", function (req, res, next) {
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -230,7 +230,7 @@ router.get("/:city/subjectID/:subjectID/type/:type", function (req, res, next) {
     db.collection("Card")
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -253,7 +253,7 @@ router.get("/:city/subjectID/:subjectID/status/:status", function (req, res, nex
     db.collection("Card")
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -275,7 +275,7 @@ router.get("/:city/levelID/:levelID/type/:type", function (req, res, next) {
     db.collection("Card")
         .where('City', '==', req.params.city)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -297,7 +297,7 @@ router.get("/:city/levelID/:levelID/status/:status", function (req, res, next) {
     db.collection("Card")
         .where('City', '==', req.params.city)
         .where('LevelID', '==', req.params.levelID)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -318,8 +318,8 @@ router.get("/:city/type/:type/status/:status", function (req, res, next) {
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('Type', '==', req.params.type)
-        .where('Status', '==', req.params.status)
+        .where('Type', '==',  parseInt(req.params.type))
+        .where('Status', '==',  parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -342,7 +342,7 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type", function (
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -365,7 +365,7 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/status/:status", functi
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -388,8 +388,8 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type/status/:stat
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .where('Status', '==', req.params.status)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -412,8 +412,8 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type/isAbleToDriv
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
+        .where('Type', '==',  parseInt(req.params.type))
+        .where('IsAbleToDrive', '==', Boolean(req.params.isAbleToDrive))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -436,8 +436,8 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type/isOnline/:is
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .where('IsOnline', '==', req.params.isOnline)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('IsOnline', '==', Boolean(req.params.isOnline))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -460,8 +460,8 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type/isHit/:isHit
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .where('IsHit', '==', req.params.isHit)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('IsHit', '==', Boolean(req.params.isHit))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -484,9 +484,9 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type/isAbleToDriv
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
-        .where('IsOnline', '==', req.params.isOnline)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('IsAbleToDrive', '==', Boolean(req.params.isAbleToDrive))
+        .where('IsOnline', '==', Boolean(req.params.isOnline))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -509,9 +509,9 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type/isAbleToDriv
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
-        .where('IsHit', '==', req.params.isHit)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('IsAbleToDrive', '==', Boolean(req.params.isAbleToDrive))
+        .where('IsHit', '==', Boolean(req.params.isHit))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -534,9 +534,9 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type/isOnline/:is
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .where('IsOnline', '==', req.params.isOnline)
-        .where('IsHit', '==', req.params.isHit)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('IsOnline', '==', Boolean(req.params.isOnline))
+        .where('IsHit', '==', Boolean(req.params.isHit))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -559,10 +559,10 @@ router.get("/:city/subjectID/:subjectID/levelID/:levelID/type/:type/isAbleToDriv
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
-        .where('IsOnline', '==', req.params.isOnline)
-        .where('IsHit', '==', req.params.isHit)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('IsAbleToDrive', '==', Boolean(req.params.isAbleToDrive))
+        .where('IsOnline', '==', Boolean(req.params.isOnline))
+        .where('IsHit', '==', Boolean(req.params.isHit))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -583,7 +583,7 @@ router.get("/:city/isAbleToDrive/:isAbleToDrive", function (req, res, next) {
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
+        .where('IsAbleToDrive', '==', Boolean(req.params.isAbleToDrive))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -604,7 +604,7 @@ router.get("/:city/isHit/:isHit", function (req, res, next) {
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('IsHit', '==', req.params.isHit)
+        .where('IsHit', '==', Boolean(req.params.isHit))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -625,7 +625,7 @@ router.get("/:city/isOnline/:isOnline", function (req, res, next) {
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('IsOnline', '==', req.params.isOnline)
+        .where('IsOnline', '==', Boolean(req.params.isOnline))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -646,8 +646,8 @@ router.get("/:city/isOnline/:isOnline/isHit/:isHit", function (req, res, next) {
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('IsOnline', '==', req.params.isOnline)
-        .where('IsHit', '==', req.params.isHit)
+        .where('IsOnline', '==',  Boolean(req.params.isOnline))
+        .where('IsHit', '==',  Boolean(req.params.isHit))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -669,8 +669,8 @@ router.get("/:city/isOnline/:isOnline/isAbleToDrive/:isAbleToDrive", function (r
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('IsOnline', '==', req.params.isOnline)
-        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
+        .where('IsOnline', '==', Boolean(req.params.isOnline))
+        .where('IsAbleToDrive', '==', Boolean(req.params.isAbleToDrive))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -684,7 +684,7 @@ router.get("/:city/isOnline/:isOnline/isAbleToDrive/:isAbleToDrive", function (r
                 .json({ message: "Unable to connect to Firestore." });
         });
 });
-
+/*
 router.get("/countCards", function (req, res, next) {
     const db = req.app.get("db");
 
@@ -716,16 +716,16 @@ router.get("/:city/countCards", function (req, res, next) {
                 .json({ message: "Unable to connect to Firestore." });
         });
 });
-
+*/
 router.get("/:city/isOnline/:isOnline/isAbleToDrive/:isAbleToDrive/isHit/:isHit", function (req, res, next) {
     const db = req.app.get("db");
     var output = [];
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('IsOnline', '==', req.params.isOnline)
-        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
-        .where('IsHit', '==', req.params.isHit)
+        .where('IsOnline', '==', Boolean(req.params.isOnline))
+        .where('IsAbleToDrive', '==', Boolean(req.params.isAbleToDrive))
+        .where('IsHit', '==', Boolean(req.params.isHit))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -746,8 +746,8 @@ router.get("/:city/isAbleToDrive/:isAbleToDrive/isHit/:isHit", function (req, re
 
     db.collection("Card")
         .where('City', '==', req.params.city)
-        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
-        .where('IsHit', '==', req.params.isHit)
+        .where('IsAbleToDrive', '==', Boolean(req.params.isAbleToDrive))
+        .where('IsHit', '==', Boolean(req.params.isHit))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {

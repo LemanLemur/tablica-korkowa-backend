@@ -7,6 +7,7 @@ module.exports = {
         endDate: req.data().EndDate,
         level: Level,
         price: req.data().Price,
+        isHit: req.data().IsHit,
         //subject: Name,
         tittle: req.data().Tittle,
         type: req.data().Type,

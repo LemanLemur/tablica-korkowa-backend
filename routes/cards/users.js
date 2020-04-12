@@ -9,12 +9,6 @@ var getMyCards = require("./helpers/getMyCards");
 
 UserID                                        /cards/UserID/wisBxHFFr8dztgSpLBao
 UserID && Status                              /cards/UserID/wisBxHFFr8dztgSpLBao/type/0  => 0-szkic, 1-aktywne, 2-nieaktywne, 3-zakończone
-
-
-            
-
-
-
 */
 router.get("/:userID", function (req, res, next) {
   const db = req.app.get("db");
@@ -24,9 +18,8 @@ router.get("/:userID", function (req, res, next) {
   var iteration = 0;
   return new Promise(function (resolve, reject) {
     db.collection("Card")
-      .where('UserID', '<=', req.params.userID)
-      //.where('Status', '==', 2)
-      
+      .where('UserID', '==', req.params.userID)
+      //.where('Status', '==', parseInt(2))    my chcemy wszystkie jakie ma, więc zakomentowane
       .get()
       .then(snapshot => {
         snapshot.forEach(x => {
@@ -92,11 +85,11 @@ router.get("/:userID/status/:status", function (req, res, next) {
   var output = [];
 
   db.collection("Card")
+  .where('UserID', '==', req.params.userID)
+  .where('Status', '==', parseInt(req.params.status))
     .get()
     .then(snapshot => {
       snapshot.forEach(doc => {
-        if (doc.data().UserID == req.params.userID) {
-          if (doc.data().Status == req.params.status) {
             output.push({
               id: doc.id,
               city: doc.data().City,
@@ -119,8 +112,6 @@ router.get("/:userID/status/:status", function (req, res, next) {
               viewsId: doc.data().ViewsId,
               province: doc.data().Province,
             });
-          }
-        }
       });
       if (output.length === 0) {
         return res.status(404).json({ message: "Any levels not found." });
