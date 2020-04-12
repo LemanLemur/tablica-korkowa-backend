@@ -134,7 +134,7 @@ router.get("/:province/type/:type", function (req, res, next) {
 
     db.collection("Card")
         .where('Province', '==', req.params.province)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -155,7 +155,7 @@ router.get("/:province/status/:status", function (req, res, next) {
 
     db.collection("Card")
         .where('Province', '==', req.params.province)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -221,7 +221,7 @@ router.get("/:province/city/:city/type/:type", function (req, res, next) {
     db.collection("Card")
         .where('Province', '==', req.params.province)
         .where('City', '==', req.params.city)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -243,7 +243,7 @@ router.get("/:province/city/:city/status/:status", function (req, res, next) {
     db.collection("Card")
         .where('Province', '==', req.params.province)
         .where('City', '==', req.params.city)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -287,7 +287,7 @@ router.get("/:province/subjectID/:subjectID/type/:type", function (req, res, nex
     db.collection("Card")
         .where('Province', '==', req.params.province)
         .where('SubjectID', '==', req.params.subjectID)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -309,7 +309,7 @@ router.get("/:province/subjectID/:subjectID/status/:status", function (req, res,
     db.collection("Card")
         .where('Province', '==', req.params.province)
         .where('SubjectID', '==', req.params.subjectID)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -329,8 +329,8 @@ router.get("/:province/levelID/:levelID/type/:type", function (req, res, next) {
 
     db.collection("Card")
         .where('Province', '==', req.params.province)
-        .where('SubjectID', '==', req.params.subjectID)
-        .where('Type', '==', req.params.type)
+        .where('LevelID', '==', req.params.levelID)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -352,7 +352,7 @@ router.get("/:province/levelID/:levelID/status/:status", function (req, res, nex
     db.collection("Card")
         .where('Province', '==', req.params.province)
         .where('LevelID', '==', req.params.levelID)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==',  parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -373,8 +373,8 @@ router.get("/:province/type/:type/status/:status", function (req, res, next) {
 
     db.collection("Card")
         .where('Province', '==', req.params.province)
-        .where('Type', '==', req.params.type)
-        .where('Status', '==', req.params.status)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -420,7 +420,7 @@ router.get("/:province/city/:city/subjectID/:subjectID/type/:type", function (re
         .where('Province', '==', req.params.province)
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -443,7 +443,7 @@ router.get("/:province/city/:city/subjectID/:subjectID/status/:status", function
         .where('Province', '==', req.params.province)
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -466,7 +466,7 @@ router.get("/:province/city/:city/levelID/:levelID/type/:type", function (req, r
         .where('Province', '==', req.params.province)
         .where('City', '==', req.params.city)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -489,7 +489,7 @@ router.get("/:province/city/:city/levelID/:levelID/status/:status", function (re
         .where('Province', '==', req.params.province)
         .where('City', '==', req.params.city)
         .where('LevelID', '==', req.params.levelID)
-        .where('Status', '==', req.params.status)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -511,8 +511,8 @@ router.get("/:province/city/:city/type/:type/status/:status", function (req, res
     db.collection("Card")
         .where('Province', '==', req.params.province)
         .where('City', '==', req.params.city)
-        .where('Type', '==', req.params.type)
-        .where('Status', '==', req.params.status)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -527,7 +527,7 @@ router.get("/:province/city/:city/type/:type/status/:status", function (req, res
         });
 });
 
-router.get("/:province/city/:city/subjectID/:subjectID/levelID/LevelID/status/:status", function (req, res, next) {
+router.get("/:province/city/:city/subjectID/:subjectID/levelID/:levelID/status/:status", function (req, res, next) {
     const db = req.app.get("db");
     var output = [];
 
@@ -536,127 +536,7 @@ router.get("/:province/city/:city/subjectID/:subjectID/levelID/LevelID/status/:s
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Status', '==', req.params.status)
-        .get()
-        .then(snapshot => {
-            snapshot.forEach(doc => {
-                output.push(helpers.getOutput(doc))
-            });
-            functions.checkStatusAndReturnJson(output, res)
-        })
-        .catch(error => {
-            return res
-                .status(400)
-                .json({ message: "Unable to connect to Firestore." });
-        });
-});
-
-router.get("/:province/city/:city/subjectID/:subjectID/levelID/LevelID/type/:type", function (req, res, next) {
-    const db = req.app.get("db");
-    var output = [];
-
-    db.collection("Card")
-        .where('Province', '==', req.params.province)
-        .where('City', '==', req.params.city)
-        .where('SubjectID', '==', req.params.subjectID)
-        .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .get()
-        .then(snapshot => {
-            snapshot.forEach(doc => {
-                output.push(helpers.getOutput(doc))
-
-
-            });
-            functions.checkStatusAndReturnJson(output, res)
-        })
-        .catch(error => {
-            return res
-                .status(400)
-                .json({ message: "Unable to connect to Firestore." });
-        });
-});
-
-router.get("/:province/city/:city/subjectID/:subjectID/levelID/LevelID/type/:type/status/:status", function (req, res, next) {
-    const db = req.app.get("db");
-    var output = [];
-
-    db.collection("Card")
-        .where('Province', '==', req.params.province)
-        .where('City', '==', req.params.city)
-        .where('SubjectID', '==', req.params.subjectID)
-        .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
-        .where('Status', '==', req.params.status)
-        .get()
-        .then(snapshot => {
-            snapshot.forEach(doc => {
-                output.push(helpers.getOutput(doc))
-            });
-            functions.checkStatusAndReturnJson(output, res)
-        })
-        .catch(error => {
-            return res
-                .status(400)
-                .json({ message: "Unable to connect to Firestore." });
-        });
-});
-
-router.get("/:province/city/:city/subjectID/:subjectID/isAbleToDrive/:isAbleToDrive", function (req, res, next) {
-    const db = req.app.get("db");
-    var output = [];
-
-    db.collection("Card")
-        .where('Province', '==', req.params.province)
-        .where('City', '==', req.params.city)
-        .where('SubjectID', '==', req.params.subjectID)
-        .where('IsAbleToDrive', '==', req.params.isAbleToDrive)
-        .get()
-        .then(snapshot => {
-            snapshot.forEach(doc => {
-                output.push(helpers.getOutput(doc))
-            });
-            functions.checkStatusAndReturnJson(output, res)
-        })
-        .catch(error => {
-            return res
-                .status(400)
-                .json({ message: "Unable to connect to Firestore." });
-        });
-});
-
-router.get("/:province/city/:city/subjectID/:subjectID/isOnline/:isOnline", function (req, res, next) {
-    const db = req.app.get("db");
-    var output = [];
-
-    db.collection("Card")
-        .where('Province', '==', req.params.province)
-        .where('City', '==', req.params.city)
-        .where('SubjectID', '==', req.params.subjectID)
-        .where('IsOnline', '==', req.params.isOnline)
-        .get()
-        .then(snapshot => {
-            snapshot.forEach(doc => {
-                output.push(helpers.getOutput(doc))
-            });
-            functions.checkStatusAndReturnJson(output, res)
-        })
-        .catch(error => {
-            return res
-                .status(400)
-                .json({ message: "Unable to connect to Firestore." });
-        });
-});
-
-router.get("/:province/city/:city/subjectID/:subjectID/isHit/:isHit", function (req, res, next) {
-    const db = req.app.get("db");
-    var output = [];
-
-    db.collection("Card")
-        .where('Province', '==', req.params.province)
-        .where('City', '==', req.params.city)
-        .where('SubjectID', '==', req.params.subjectID)
-        .where('IsHit', '==', req.params.isHit)
+        .where('Status', '==', parseInt(req.params.status))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {
@@ -680,7 +560,103 @@ router.get("/:province/city/:city/subjectID/:subjectID/levelID/:levelID/type/:ty
         .where('City', '==', req.params.city)
         .where('SubjectID', '==', req.params.subjectID)
         .where('LevelID', '==', req.params.levelID)
-        .where('Type', '==', req.params.type)
+        .where('Type', '==', parseInt(req.params.type))
+        .get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                output.push(helpers.getOutput(doc))
+
+
+            });
+            functions.checkStatusAndReturnJson(output, res)
+        })
+        .catch(error => {
+            return res
+                .status(400)
+                .json({ message: "Unable to connect to Firestore." });
+        });
+});
+
+router.get("/:province/city/:city/subjectID/:subjectID/levelID/:levelID/type/:type/status/:status", function (req, res, next) {
+    const db = req.app.get("db");
+    var output = [];
+
+    db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('LevelID', '==', req.params.levelID)
+        .where('Type', '==', parseInt(req.params.type))
+        .where('Status', '==', parseInt(req.params.status))
+        .get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                output.push(helpers.getOutput(doc))
+            });
+            functions.checkStatusAndReturnJson(output, res)
+        })
+        .catch(error => {
+            return res
+                .status(400)
+                .json({ message: "Unable to connect to Firestore." });
+        });
+});
+
+router.get("/:province/city/:city/subjectID/:subjectID/isAbleToDrive/:isAbleToDrive", function (req, res, next) {
+    const db = req.app.get("db");
+    var output = [];
+
+    db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('IsAbleToDrive', '==', Boolean(req.params.isAbleToDrive))
+        .get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                output.push(helpers.getOutput(doc))
+            });
+            functions.checkStatusAndReturnJson(output, res)
+        })
+        .catch(error => {
+            return res
+                .status(400)
+                .json({ message: "Unable to connect to Firestore." });
+        });
+});
+
+router.get("/:province/city/:city/subjectID/:subjectID/isOnline/:isOnline", function (req, res, next) {
+    const db = req.app.get("db");
+    var output = [];
+
+    db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('IsOnline', '==', Boolean(req.params.isOnline))
+        .get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                output.push(helpers.getOutput(doc))
+            });
+            functions.checkStatusAndReturnJson(output, res)
+        })
+        .catch(error => {
+            return res
+                .status(400)
+                .json({ message: "Unable to connect to Firestore." });
+        });
+});
+
+router.get("/:province/city/:city/subjectID/:subjectID/isHit/:isHit", function (req, res, next) {
+    const db = req.app.get("db");
+    var output = [];
+
+    db.collection("Card")
+        .where('Province', '==', req.params.province)
+        .where('City', '==', req.params.city)
+        .where('SubjectID', '==', req.params.subjectID)
+        .where('IsHit', '==', Boolean(req.params.isHit))
         .get()
         .then(snapshot => {
             snapshot.forEach(doc => {

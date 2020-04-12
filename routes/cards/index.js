@@ -45,71 +45,54 @@ router.get("/:id", function (req, res, next) {
   const db = req.app.get("db");
   var output = [];
 
-  return new Promise(function (resolve, reject) {
     db.collection("Card")
       .doc(req.params.id)
       .get()
-      .then(snapshot => {
-        resolve(snapshot)
+      .then(doc => {
+        
+  return new Promise(function (resolve, reject) {
+          db.collection("Users")
+            .where('AccountID', '==', doc.data().UserID)
+            .get()
+            .then(snapshot => {
+              snapshot.forEach(doc2 => {
+                output.push({
+                  id: doc.id,
+                  city: doc.data().City,
+                  created: doc.data().Created,
+                  deleted: doc.data().Deleted,
+                  description: doc.data().Description,
+                  endDate: doc.data().EndDate,
+                  isAbleToDrive: doc.data().IsAbleToDrive,
+                  isHit: doc.data().IsHit,
+                  isOnline: doc.data().IsOnline,
+                  levelId: doc.data().LevelID,
+                  price: doc.data().Price,
+                  range: doc.data().Range,
+                  startDate: doc.data().StartDate,
+                  status: doc.data().Status,
+                  subjectID: doc.data().SubjectID,
+                  tittle: doc.data().Tittle,
+                  type: doc.data().Type,
+                  userId: doc.data().UserID,
+                  viewsId: doc.data().ViewsID,
+                  province: doc.data().Province,
+                  avatar: doc2.data().Avatar
+                });
+                resolve(output)
+              })
+        })
+      }).then(x => {
+
+
         if (output.length === 0) {
           return res.status(404).json({ message: "Any levels not found." });
+        } else {
+          return res.status(200).json(output);
         }
       })
-      .catch(error => {
-        return res
-          .status(400)
-          .json({ message: "Unable to connect to Firestore." });
-      });
-  }).then(snapshot => {
-    snapshot.forEach(doc => {
-      db.collection("Users")
-        .doc(doc.UserId)
-        .get()
-        .then(snapshot2 => {
-          snapshot2.forEach(doc2 => {
-            output.push({
-              id: doc.id,
-              city: doc.data().City,
-              created: doc.data().Created,
-              deleted: doc.data().Deleted,
-              description: doc.data().Description,
-              endDate: doc.data().EndDate,
-              isAbleToDrive: doc.data().IsAbleToDrive,
-              isHit: doc.data().IsHit,
-              isOnline: doc.data().IsOnline,
-              levelId: doc.data().LevelID,
-              price: doc.data().Price,
-              range: doc.data().Range,
-              startDate: doc.data().StartDate,
-              status: doc.data().Status,
-              subjectID: doc.data().SubjectID,
-              tittle: doc.data().Tittle,
-              type: doc.data().Type,
-              userId: doc.data().UserID,
-              viewsId: doc.data().ViewsID,
-              province: doc.data().Province,
-              avatar: doc2.data().Avatar
-            });
-          });
-
-          if (output.length === 0) {
-            return res.status(404).json({ message: "Any levels not found." });
-          } else {
-            return res.status(200).json(output);
-          }
-        })
-        .catch(error => {
-          return res
-            .status(400)
-            .json({ message: "Unable to connect to Firestore." });
-        });
-    });
-
-
-
-
-  })
-});
+  });
+})
 
 router.get("/newestCards/:number", function (req, res, next) {
   const db = req.app.get("db");
@@ -124,60 +107,59 @@ router.get("/newestCards/:number", function (req, res, next) {
       .get()
       .then(snapshot => {
         snapshot.forEach(x => {
-          count++  
+          count++
         })
         snapshot.forEach(document => {
           //return new Promise(function (resolve2, reject) {
-            //db.collection("Subject")
-              //.doc(document.data().SubjectID)
-              //.get()
-              //.then(snapshot2 => {
-                //console.log(snapshot2.data().Name)
-                //resolve2(snapshot2.data().Name)
-             // })
+          //db.collection("Subject")
+          //.doc(document.data().SubjectID)
+          //.get()
+          //.then(snapshot2 => {
+          //console.log(snapshot2.data().Name)
+          //resolve2(snapshot2.data().Name)
+          // })
 
           //}).then(SubjectName => {
-            
-              db.collection("Users")
-              .where('AccountID', '==', document.data().UserID)
-                .get()
-                .then(snapshot3 => { 
-                  snapshot3.forEach(document3 => {
-                    return new Promise(function (resolve3, reject) {
-                    //console.log(document3.data().Avatar)
-                    resolve3(document3.data().Avatar)
-                  }).then( avatar => {
-                    db.collection("Level")
+
+          db.collection("Users")
+            .where('AccountID', '==', document.data().UserID)
+            .get()
+            .then(snapshot3 => {
+              snapshot3.forEach(document3 => {
+                return new Promise(function (resolve3, reject) {
+                  //console.log(document3.data().Avatar)
+                  resolve3(document3.data().Avatar)
+                }).then(avatar => {
+                  db.collection("Level")
                     .doc(document.data().LevelID)
-                      .get()
-                      .then(snapshot4 => { 
-                          return new Promise(function (resolve4, reject) {
-                          resolve4(snapshot4.data().Value)
-                          }).then(level => {
-                            //output.push(importantOutput.getImportantOutput(document, SubjectName, avatar, level));
-                            output.push(importantOutput.getImportantOutput(document, avatar, level));
-                            iteration++
-                            console.log(count, iteration)
-                            if(count == iteration)
-                            {
-                              resolve(output)
-                            }
-                          })
-                        })
-                  })
+                    .get()
+                    .then(snapshot4 => {
+                      return new Promise(function (resolve4, reject) {
+                        resolve4(snapshot4.data().Value)
+                      }).then(level => {
+                        //output.push(importantOutput.getImportantOutput(document, SubjectName, avatar, level));
+                        output.push(importantOutput.getImportantOutput(document, avatar, level));
+                        iteration++
+                        console.log(count, iteration)
+                        if (count == iteration) {
+                          resolve(output)
+                        }
+                      })
+                    })
                 })
+              })
             })
           //})
         })
       })
-    }).then(x => {
-      if (x.length === 0) {
-        return res.status(404).json({ message: "Any levels not found." });
-      } else {
-        return res.status(200).json(x);
-      }
-    })
+  }).then(x => {
+    if (x.length === 0) {
+      return res.status(404).json({ message: "Any levels not found." });
+    } else {
+      return res.status(200).json(x);
+    }
   })
+})
 
 /*
 POSTMAN -> 
@@ -210,8 +192,8 @@ router.post("/", (req, res) => {
   let created = moment().unix();
   let isdeleted = null;
   let isHit = req.body.isHit;
-  let status = 1; //active
-  let userID = req.body.isHit;
+  let status = 0; //active
+  let userID = req.body.userID;
   let type = req.body.type;
   let price = req.body.price;
   let isAbleToDrive = req.body.isAbleToDrive
@@ -221,6 +203,7 @@ router.post("/", (req, res) => {
   let isOnline = req.body.isOnline
   let levelID = req.body.levelID
   let subjectID = req.body.subjectID
+  let tittle = req.body.tittle
   return new Promise(function (resolve, reject) {
     db.collection("Views")
       .add({
@@ -260,7 +243,8 @@ router.post("/", (req, res) => {
         ViewsID: viewsIDFromPromise,
         IsOnline: isOnline,
         LevelID: levelID,
-        SubjectID: subjectID
+        SubjectID: subjectID,
+        Tittle: tittle
       })
       .then(ref => {
         if (ref.id) {
@@ -408,7 +392,7 @@ router.put("/:id", (req, res) => {
   if (!update) {
     return res.status(304).json({ message: "No changes." });
   } else {
-    db.collection("Views")
+    db.collection("Card")
       .doc(req.params.id)
       .set(update, { merge: true })
       .then(() => {
