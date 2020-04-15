@@ -22,6 +22,7 @@ router.get("/", function (req, res, next) {
             lastTimeLogged: doc.data().LastTimeLogged,
             telephone: doc.data().Telephone,
             updated: doc.data().Updated,
+            provider: doc.data().Provider,
           });
         });
         return res.status(200).json(output);
@@ -56,6 +57,7 @@ router.get("/:id", function (req, res, next) {
           lastTimeLogged: doc.data().LastTimeLogged,
           telephone: doc.data().Telephone,
           updated: doc.data().Updated,
+          provider: doc.data().Provider,
         });
       });
       if (output.length === 0) {
@@ -91,6 +93,7 @@ router.get("/accountid/:id", function (req, res, next) {
           lastTimeLogged: doc.data().LastTimeLogged,
           telephone: doc.data().Telephone,
           updated: doc.data().Updated,
+          provider: doc.data().Provider,
         });
       });
       if (output.length === 0) {
@@ -117,8 +120,9 @@ router.post("/", (req, res) => {
   let accountID = req.body.accountID;
   let email = req.body.email;
   let avatar = req.body.avatar;
+  let provider = req.body.provider;
 
-  if (telephone === "") {
+  if (telephone === "" || telephone === null) {
     telephone = "brak";
   }
   if (avatar === "") {
@@ -135,6 +139,7 @@ router.post("/", (req, res) => {
       AccountID: accountID,
       Email: email,
       Avatar: avatar,
+      Provider: provider,
     })
     .then((ref) => {
       if (ref.id) {
@@ -169,6 +174,28 @@ router.put("/:id", (req, res) => {
   if (lastname) update["LastName"] = lastname;
   if (telephone) update["Telephone"] = telephone;
   if (avatar) update["Avatar"] = avatar;
+
+  db.collection("Users")
+    .doc(req.params.id)
+    .set(update, { merge: true })
+    .then(() => {
+      return res.status(200).json({ message: "Data updated." });
+    })
+    .catch((error) => {
+      return res
+        .status(400)
+        .json({ message: "Unable to connect to Firestore." });
+    });
+});
+
+router.put("/email/:id", (req, res) => {
+  const db = req.app.get("db");
+  let timestamp = new Date();
+  let email = req.body.email;
+  var update = {};
+
+  update["Updated"] = timestamp;
+  if (email) update["Email"] = email;
 
   db.collection("Users")
     .doc(req.params.id)
