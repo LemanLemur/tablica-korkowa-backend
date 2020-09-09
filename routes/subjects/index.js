@@ -14,7 +14,7 @@ router.get("/:id", function(req, res, next) {
   gets.getById(req, res);
 });
 
-router.use("/name", function(req, res, next) {
+router.use("/name/:name", function(req, res, next) {
   gets.getByName(req, res);
 });
 

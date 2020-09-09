@@ -34,7 +34,7 @@ module.exports = {
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
-          output.push(helpers.getOutput(doc));
+          output.push({ id: doc.id, value: doc.data().Value });
         });
         if (output.length === 0) {
           return res.status(404).json({ message: "Any levels not found." });
