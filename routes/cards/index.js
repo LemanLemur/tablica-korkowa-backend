@@ -268,15 +268,14 @@ router.post("/", (req, res) => {
 
 */
 
-/*
 router.delete("/:id", (req, res) => {
   const db = req.app.get("db");
 
-  db.collection("Views")
+  db.collection("Card")
     .doc(req.params.id)
     .delete()
     .then(() => {
-      return res.status(200).json({ message: "View deleted." });
+      return res.status(200).json({ message: "Card deleted." });
     })
     .catch(error => {
       return res
@@ -284,9 +283,6 @@ router.delete("/:id", (req, res) => {
         .json({ message: "Unable to connect to Firestore." });
     });
 });
-*/
-
-
 
 /*
       PUT 
