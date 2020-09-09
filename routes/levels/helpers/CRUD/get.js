@@ -32,10 +32,8 @@ module.exports = {
     db.collection("Level")
       .doc(req.params.id)
       .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
+      .then(doc => {
           output.push({ id: doc.id, value: doc.data().Value });
-        });
         if (output.length === 0) {
           return res.status(404).json({ message: "Any levels not found." });
         } else {
